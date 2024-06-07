@@ -1,7 +1,7 @@
 # cloudflare-docker-proxy
 
 ## Deploy
-
+```
 创建api token:
 https://dash.cloudflare.com/profile/api-tokens
 选择 -> "编辑 Cloudflare Workers" -> "使用模板" 记录好生成token
@@ -16,6 +16,7 @@ CLOUDFLARE_ACCOUNT_ID = your account id 就是cloudflare的account id
 cloudflare workers 域名设置 设置->触发器->添加自定义域 把所以域名添加到自定义域就可以了
 ${workername}.${username}.workers.dev 返回的routes json
 cf 优选ip https://github.com/XIU2/CloudflareSpeedTest
+```
 ## Config tutorial
 
 1. use cloudflare worker host: only support proxy one registry
