@@ -1,16 +1,21 @@
 # cloudflare-docker-proxy
 
-![deploy](https://github.com/qist/cloudflare-docker-proxy/actions/workflows/deploy.yaml/badge.svg)
-
-> If you're looking for proxy for helm, maybe you can try [cloudflare-helm-proxy](https://github.com/qist/cloudflare-helm-proxy).
-
 ## Deploy
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/qist/cloudflare-docker-proxy)
 
-1. fork this project
-2. modify the link of the above button to your fork url
-3. click the button, you will be redirected to the deploy page
+创建api token:
+https://dash.cloudflare.com/profile/api-tokens
+选择 -> "编辑 Cloudflare Workers" -> "使用模板" 记录好生成token
+github action 配置:
+settings->"secrets and variables"->Actions->"New repository secret" 添加如下变量：
+CF_API_TOKEN = your token 就是上面生成的token
+CLOUDFLARE_ACCOUNT_ID = your account id 就是cloudflare的account id
 
+点击actions 激活github action 自动构建部署
+然后修改src/index.js 修改routes 配置 提交到github 会自动构建部署到cloudflare workers
+域名解析设置
+cloudflare workers 域名设置 设置->触发器->添加自定义域 把所以域名添加到自定义域就可以了
+${workername}.${username}.workers.dev 返回的routes json
+cf 优选ip https://github.com/XIU2/CloudflareSpeedTest
 ## Config tutorial
 
 1. use cloudflare worker host: only support proxy one registry
